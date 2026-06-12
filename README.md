@@ -4,6 +4,7 @@
 
 Su objetivo principal es ofrecer un entorno académico y accesible para la enseñanza y el aprendizaje del diseño de algoritmos, reduciendo la complejidad sintáctica propia de los lenguajes de programación tradicionales.
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-gaddis--kit--esp-black?logo=github)](https://github.com/j-hernandez-dev/gaddis-kit-esp)
 ---
 
 ## 📌 Propósito del proyecto

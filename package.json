@@ -9,10 +9,15 @@
   "categories": [
     "Language Packs"
   ],
-  "activationEvents": [
-    "onLanguage:gaddis-es",
-    "onCommand:gaddis.runAnalysis"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j-hernandez-dev/gaddis-kit-esp.git"
+  },
+  "homepage": "https://github.com/j-hernandez-dev/gaddis-kit-esp",
+  "bugs": {
+    "url": "https://github.com/j-hernandez-dev/gaddis-kit-esp/issues"
+  },
+  "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
     "commands": [
