@@ -3,6 +3,8 @@
   "displayName": "Gaddis Kit Español",
   "description": "Soporte de lenguaje y herramientas para el pseudolenguaje Gaddis.",
   "version": "1.0.0",
+  "publisher": "j-hernandez-dev",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.120.0"
   },
