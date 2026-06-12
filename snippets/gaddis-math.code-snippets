@@ -1,0 +1,37 @@
+{
+    "Valor absoluto": {
+        "prefix": "abs",
+        "body": [
+            "Abs(${1:numero})"
+        ],
+        "description": "Valor absoluto"
+    },
+    "Raíz cuadrada": {
+        "prefix": "rai",
+        "body": [
+            "Raiz(${1:numero})"
+        ],
+        "description": "Raíz cuadrada"
+    },
+    "Seno": {
+        "prefix": "sen",
+        "body": [
+            "Sen(${1:angulo})"
+        ],
+        "description": "Función seno"
+    },
+    "Coseno": {
+        "prefix": "cos",
+        "body": [
+            "Cos(${1:angulo})"
+        ],
+        "description": "Función coseno"
+    },
+    "Tangente": {
+        "prefix": "tan",
+        "body": [
+            "Tan(${1:angulo})"
+        ],
+        "description": "Función tangente"
+    }
+}

@@ -1,0 +1,471 @@
+ESTRUCTURA
+
+parser/
+│
+├── parser.js
+│
+├── core/
+│   ├── programRules.js
+│   ├── statementRules.js
+│   └── blockRules.js
+│
+├── control/
+│   ├── if/
+│   │   ├── ifStatement.js
+│   │   ├── elseIfClause.js
+│   │   └── elseClause.js
+│   │
+│   ├── whileRules.js
+│   ├── forRules.js
+│   └── switchRules.js
+│
+├── declarations/
+│   ├── variableDeclaration.js
+│   ├── functionDeclaration.js
+│   ├── procedureDeclaration.js
+│   └── parameterRules.js
+│
+├── io/
+│   ├── readStatement.js
+│   └── writeStatement.js
+│
+├── expressions/
+│   ├── expression.js
+│   ├── logical.js
+│   ├── comparison.js
+│   ├── additive.js
+│   ├── multiplicative.js
+│   ├── power.js
+│   └── primary.js
+│
+├── calls/
+│   ├── functionCall.js
+│   └── procedureCall.js
+│
+├── statements/
+│   ├── assignmentStatement.js
+│   └── returnStatement.js
+│
+└── types/
+    └── typeRules.js
+
+-----------------
+
+-- PROGRAMA --
+
+programa ::= { instruccion } ;
+
+-- INSTRUCCIONES --
+
+instruccion ::=
+      arreglo_declaracion
+    | constante_declaracion
+    | variable_declaracion
+    | asignacion
+    | entrada
+    | salida
+    | if_stmt
+    | while_stmt
+    | for_stmt
+    | switch_stmt
+    | funcion
+    | procedimiento
+    | llamada_procedimiento ;
+
+-- BLOQUES --
+
+bloque ::= { instruccion } ;
+
+-- VARIABLES Y TIPOS --
+
+variable_declaracion ::=
+    "Declarar"
+    identificador
+    { "," identificador }
+    "Como"
+    tipo ;
+
+constante_declaracion ::=
+    "Declarar"
+    "Constante"
+    identificador
+    "="
+    expresion ;
+    
+arreglo_declaracion ::=
+    "Declarar"
+    identificador
+    dimensiones
+    "Como"
+    tipo ;
+
+dimensiones ::=
+    "[" expresion "]"
+    { "[" expresion "]" } ;
+
+tipo ::=
+      "Entero"
+    | "Real"
+    | "Cadena"
+    | "Logico"
+    | "Caracter" ;
+
+-- ASIGNACIÓN --
+
+asignacion ::=
+    L_valor
+    "<-"
+    expresion ;
+    
+L_valor ::=
+    identificador
+    { "[" expresion "]" } ;
+
+-- ENTRADA / SALIDA --
+
+entrada ::=
+    "Leer"
+    identificador
+    { "," identificador } ;
+
+salida ::=
+    "Escribir"
+    expresion
+    { "," expresion } ;
+
+-- EXPRESIONES --
+
+expresion ::= logica ;
+
+logica ::= or_expr ;
+
+or_expr ::=
+    and_expr
+    { "O" and_expr } ;
+
+and_expr ::=
+    not_expr
+    { "Y" not_expr } ;
+
+not_expr ::=
+      "No" not_expr
+    | comparacion ;
+
+comparacion ::=
+    suma
+    [
+        (
+            "="
+          | "<>"
+          | "<"
+          | ">"
+          | "<="
+          | ">="
+        )
+        suma
+    ] ;
+
+suma ::=
+    termino
+    {
+        ("+" | "-")
+        termino
+    } ;
+
+termino ::=
+    potencia
+    {
+        ("*" | "/" | "MOD")
+        potencia
+    } ;
+
+potencia ::=
+    factor
+    [
+        "^"
+        potencia
+    ] ;
+
+primario ::=
+      numero
+    | cadena
+    | logico
+    | nulo
+    | llamada_funcion
+    | identificador
+    | "(" expresion ")" ;
+    
+acceso ::=
+    identificador
+    { "[" expresion "]" } ;
+
+logico ::=
+      "Verdadero"
+    | "Falso" ;
+
+nulo ::=
+    "Nulo" ;
+
+-- CONDICIONALES --
+
+if_stmt ::=
+    "Si"
+    expresion
+    "Entonces"
+
+    bloque
+
+    { else_if }
+
+    [ else ]
+
+    "Fin"
+    "Si" ;
+
+else_if ::=
+    "Sino"
+    "Si"
+    expresion
+    "Entonces"
+
+    bloque ;
+
+else ::=
+    "Sino"
+
+    bloque ;
+
+-- MIENTRAS --
+
+while_stmt ::=
+    "Mientras"
+    expresion
+
+    bloque
+
+    "Fin"
+    "Mientras" ;
+
+-- PARA --
+
+for_stmt ::=
+    "Para"
+    identificador
+    "<-"
+    expresion
+
+    "Hasta"
+    expresion
+
+    [ "Paso" expresion ]
+
+    bloque
+
+    "Fin"
+    "Para" ;
+
+-- SELECCIONAR CASO --
+
+switch_stmt ::=
+    "Seleccionar"
+    expresion
+
+    caso
+    { caso }
+
+    [ defecto ]
+
+    "Fin"
+    "Seleccionar" ;
+
+caso ::=
+    "Caso"
+    expresion
+    ":"
+
+    bloque ;
+
+defecto ::=
+    "Defecto"
+    ":"
+
+    bloque ;
+
+-- PROCEDIMIENTO --
+
+procedimiento ::=
+    "Procedimiento"
+    identificador
+    "("
+    [ parametros ]
+    ")"
+
+    bloque
+
+    "Fin"
+    "Procedimiento" ;
+
+-- FUNCIÓN --
+
+funcion ::=
+    "Funcion"
+    identificador
+    "("
+    [ parametros ]
+    ")"
+
+    bloque
+
+    retorno
+
+    "Fin"
+    "Funcion" ;
+
+-- PARÁMETROS --
+
+parametros_lista ::=
+    parametro
+    { "," parametro } ;
+
+parametro ::=
+    identificador
+    dimensiones_opc
+    tipo ;
+    
+dimensiones_opc ::=
+    dimensiones
+  | ε ;
+
+-- LLAMADAS --
+
+llamada_procedimiento ::=
+    "Llamar"
+    identificador
+    "("
+    [ argumentos ]
+    ")" ;
+
+llamada_funcion ::=
+    identificador
+    "("
+    [ argumentos ]
+    ")" ;
+
+argumentos ::=
+    expresion
+    { "," expresion } ;
+
+-- RETORNO --
+
+retorno ::=
+    "Retornar"
+    expresion ;
+
+-- IDENTIFICADORES Y LITERALES --
+
+identificador ::=
+    letra
+    {
+        letra
+      | digito
+      | "_"
+    } ;
+
+numero ::=
+    digito
+    { digito } ;
+
+cadena ::=
+    '"'
+    { caracter }
+    '"' ;
+
+-------------------- 
+
+-- Control de flujo --
+
+Si
+Entonces
+Sino
+Mientras
+Hacer
+Para
+Hasta
+Que
+Fin
+Seleccionar
+Caso
+Defecto
+
+-- Subprogramas --
+
+Funcion
+Procedimiento
+Retornar
+Llamar
+
+-- Declaraciones --
+
+Declarar
+Constante
+Como
+
+-- I/O --
+
+Leer
+Escribir
+
+-- Booleanos --
+
+Verdadero
+Falso
+Nulo
+
+-- Literales --
+
+NUMBER
+STRING
+BOOLEAN
+NULL
+
+-- Identificadores --
+
+IDENTIFIER → [a-zA-Z_][a-zA-Z0-9_]*
+
+-- Aritméticos --
+
++
+-
+*
+/
+^
+MOD
+
+-- Relaciones --
+
+=
+<>
+<
+>
+<=
+>=
+
+-- Asignación --
+
+<-
+
+-- Lógicos --
+
+Y
+O
+NO
+
+-- Separadores --
+
+(
+)
+[
+]
+,
+:
+.

@@ -1,0 +1,16 @@
+{
+    "Longitud de cadena": {
+        "prefix": "long",
+        "body": [
+            "Longitud(${1:cadena})"
+        ],
+        "description": "Funciones de cadena"
+    },
+    "Subcadena": {
+        "prefix": "subcad",
+        "body": [
+            "Subcadena(${1:cadena}, ${2:inicio}, ${3:longitud})"
+        ],
+        "description": "Funciones de cadena"
+    }
+}

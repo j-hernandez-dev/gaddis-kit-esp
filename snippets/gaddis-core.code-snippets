@@ -1,0 +1,176 @@
+{
+    "Principal": {
+        "prefix": "principal",
+        "body": [
+            "Procedimiento Principal()",
+            "\t${1}",
+            "Fin Procedimiento"
+        ],
+        "description": "Programa principal"
+    },
+    "Declarar": {
+        "prefix": "dec",
+        "body": [
+            "Declarar ${1:variable} Como ${2:Entero}"
+        ],
+        "description": "Declaración de variable"
+    },
+    "Constante": {
+        "prefix": "const",
+        "body": [
+            "Declarar Constante ${1:constante} = ${2:valor}"
+        ],
+        "description": "Declaración de constante"
+    },
+    "Leer": {
+        "prefix": "leer",
+        "body": [
+            "Leer ${1:variable}"
+        ],
+        "description": "Entrada de datos"
+    },
+    "Escribir": {
+        "prefix": "esc",
+        "body": [
+            "Escribir ${1:\"mensaje\"}"
+        ],
+        "description": "Salida de datos"
+    },
+    "Asignacion": {
+        "prefix": "asig",
+        "body": [
+            "${1:variable} <- ${2:valor}"
+        ],
+        "description": "Asignación"
+    },
+    "Si": {
+        "prefix": "si",
+        "body": [
+            "Si ${1:condicion} Entonces",
+            "\t${2}",
+            "Fin Si"
+        ],
+        "description": "Estructura condicional Si"
+    },
+    "Si Sino": {
+        "prefix": "sisino",
+        "body": [
+            "Si ${1:condicion} Entonces",
+            "\t${2}",
+            "Sino",
+            "\t${3}",
+            "Fin Si"
+        ],
+        "description": "Estructura Si-Sino"
+    },
+    "Si Sino Si": {
+        "prefix": "sinosi",
+        "body": [
+            "Si ${1:condicion1} Entonces",
+            "\t${2}",
+            "Sino Si ${2:condicion2} Entonces",
+            "\t${3}",
+            "Sino",
+            "\t${4}",
+            "Fin Si"
+        ],
+        "description": "Cadena de decisiones"
+    },
+    "Seleccionar Caso": {
+        "prefix": "caso",
+        "body": [
+            "Seleccionar ${1:expresion}",
+            "\tCaso ${2:valor1}:",
+            "\t\t${3}",
+            "\tCaso ${4:valor2}:",
+            "\t\t${5}",
+            "\tDefecto:",
+            "\t\t${6}",
+            "Fin Seleccionar"
+        ],
+        "description": "Estructura Select Case"
+    },
+    "Mientras": {
+        "prefix": "mientras",
+        "body": [
+            "Mientras ${1:condicion}",
+            "\t${2}",
+            "Fin Mientras"
+        ],
+        "description": "Bucle Mientras"
+    },
+    "Hacer Mientras": {
+        "prefix": "hacer",
+        "body": [
+            "Hacer Mientras ${1:condicion}",
+            "\t${2}",
+            "Fin Hacer"
+        ],
+        "description": "Bucle Hacer Mientras"
+    },
+    "Para": {
+        "prefix": "para",
+        "body": [
+            "Para ${1:i} <- ${2:1} Hasta ${3:10}",
+            "\t${4}",
+            "Fin Para"
+        ],
+        "description": "Bucle Para"
+    },
+    "Para Paso": {
+        "prefix": "parapaso",
+        "body": [
+            "Para ${1:i} <- ${2:0} Hasta ${3:100} Paso ${4:5}",
+            "\t${5}",
+            "Fin Para"
+        ],
+        "description": "Bucle Para con paso"
+    },
+    "Procedimiento": {
+        "prefix": "proc",
+        "body": [
+            "Procedimiento ${1:Nombre}(${2:parametro} ${3:Entero})",
+            "\t${3}",
+            "Fin Procedimiento"
+        ],
+        "description": "Procedimiento"
+    },
+    "Funcion": {
+        "prefix": "func",
+        "body": [
+            "Funcion ${1:Nombre}(${2:parametro} ${3:Entero})",
+            "\t${4}",
+            "\tRetornar ${5:parametro}",
+            "Fin Funcion"
+        ],
+        "description": "Función"
+    },
+    "Llamar Procedimiento": {
+        "prefix": "llamar",
+        "body": [
+            "Llamar ${1:Nombre}(${2})"
+        ],
+        "description": "Llamar procedimiento"
+    },
+    "Retornar": {
+        "prefix": "ret",
+        "body": [
+            "Retornar ${1:valor}"
+        ],
+        "description": "Retorno de función"
+    },
+    "Arreglo": {
+        "prefix": "arr",
+        "body": [
+            "Declarar ${1:datos}[${2:100}] Como ${3:Entero}"
+        ],
+        "description": "Arreglo unidimensional"
+    },
+    "Matriz": {
+        "prefix": "mat",
+        "body": [
+            "Declarar ${1:matriz}[${2:10}][${3:10}] Como ${4:Entero}"
+        ],
+        "description": "Matriz bidimensional"
+    }
+}

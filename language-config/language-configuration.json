@@ -1,0 +1,55 @@
+// languaje-configuration.json
+
+{
+    "comments": {
+        "lineComment": "//",
+        "blockComment": [
+            "/*",
+            "*/"
+        ]
+    },
+
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"]
+    ],
+
+    "autoClosingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+
+    "indentationRules": {
+        "increaseIndentPattern": "^\\s*(Procedimiento\\s+Principal|Si|Mientras|Para|Funcion|Procedimiento|Seleccionar\\s+Caso|Hacer)\\b.*$",
+        "decreaseIndentPattern": "^\\s*(Sino|Hasta\\s+Que|Fin\\s+Si|Fin\\s+Mientras|Fin\\s+Para|Fin\\s+Funcion|Fin\\s+Procedimiento)\\b.*$"
+    },
+
+    "folding": {
+        "markers": {
+            "start": "^\\s*(Procedimiento\\s+Principal|Si|Mientras|Para|Funcion|Procedimiento|Seleccionar\\s+Caso|Hacer)\\b",
+            "end": "^\\s*(Hasta\\s+Que|Fin\\s+Si|Fin\\s+Mientras|Fin\\s+Para|Fin\\s+Funcion|Fin\\s+Procedimiento)\\b"
+        }
+    },
+
+    "onEnterRules": [
+        {
+            "beforeText": "^\\s*//.*$",
+            "action": {
+                "indentAction": "none",
+                "appendText": "// "
+            }
+        }
+    ]
+}

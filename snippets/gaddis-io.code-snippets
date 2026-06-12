@@ -1,0 +1,30 @@
+{
+    "Abrir Archivo": {
+        "prefix": "abrir",
+        "body": [
+            "Llamar Abrir(${1:archivo})"
+        ],
+        "description": "Abrir archivo"
+    },
+    "Leer Archivo": {
+        "prefix": "leerarch",
+        "body": [
+            "Llamar LeerArchivo (${1:archivo}, ${2:variable})"
+        ],
+        "description": "Lectura de archivo"
+    },
+    "Escribir Archivo": {
+        "prefix": "escribirarch",
+        "body": [
+            "Llamar EscribirArchivo (${1:archivo}, ${2:dato})"
+        ],
+        "description": "Escritura de archivo"
+    },
+    "Cerrar Archivo": {
+        "prefix": "cerrar",
+        "body": [
+            "Llamar Cerrar (${1:archivo})"
+        ],
+        "description": "Cerrar archivo"
+    }
+}
