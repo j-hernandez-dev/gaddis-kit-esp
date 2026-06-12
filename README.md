@@ -75,7 +75,7 @@ Actualmente no se requieren dependencias externas adicionales para usar la exten
 
 ## ⚠️ Problemas conocidos
 
-* El comando de ejecución (Ejecutar Código Fuente) actualmente solo realiza análisis léxico y sintáctico.
+* El comando de ejecución (Ejecutar análisis) actualmente solo realiza análisis léxico y sintáctico.
 * No existe aún ejecución real del código.
 * El manejo de errores aún puede mejorarse en cuanto a precisión y recuperación.
 
