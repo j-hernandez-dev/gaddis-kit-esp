@@ -11,7 +11,6 @@ import * as Tokens from "../../lexer/tokens/index.js";
  *       numero
  *     | cadena
  *     | logico
- *     | nulo
  *     | llamada_funcion
  *     | acceso
  *     | "(" expresion ")" ;
@@ -62,25 +61,7 @@ export function registerPrimaryRules(parser) {
         }
       },
 
-      /**
-       * nulo
-       */
-      {
-        ALT: () => {
-          parser.CONSUME(Tokens.NullLiteral);
-        }
-      },
-
-      /**
-       * llamada_funcion
-       *
-       * Debe ir antes que Identifier.
-       */
-      {
-        ALT: () => {
-          parser.SUBRULE(parser.functionCall);
-        }
-      },
+      /** * llamada_funcion * * Debe ir antes que Identifier. */ { GATE: () => parser.LA(2).tokenType === Tokens.LParen, ALT: () => { return parser.SUBRULE(parser.functionCall); } },
 
       /**
        * identificador

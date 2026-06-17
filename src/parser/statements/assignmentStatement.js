@@ -1,6 +1,7 @@
 // assignmentStatement.js
 
 import * as Tokens from "../../lexer/tokens/index.js";
+import { consumeAssignment } from "../config/assignmentRules.js";
 
 /**
  * ==================================
@@ -26,7 +27,7 @@ export function registerAssignmentRules(parser) {
 
     parser.SUBRULE(parser.LValue);
 
-    parser.CONSUME(Tokens.Assignment);
+    consumeAssignment(parser);
 
     parser.SUBRULE(parser.expression);
 
@@ -34,13 +35,13 @@ export function registerAssignmentRules(parser) {
 
   parser.RULE("LValue", () => {
 
-  parser.CONSUME(Tokens.Identifier);
+    parser.CONSUME(Tokens.Identifier);
 
-  parser.MANY(() => {
-    parser.CONSUME(Tokens.LBracket);
-    parser.SUBRULE(parser.expression);
-    parser.CONSUME(Tokens.RBracket);
+    parser.MANY(() => {
+      parser.CONSUME(Tokens.LBracket);
+      parser.SUBRULE(parser.expression);
+      parser.CONSUME(Tokens.RBracket);
+    });
+
   });
-
-});
 }

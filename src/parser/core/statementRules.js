@@ -6,7 +6,6 @@
  * ==================================
  *
  * instruccion ::=
- *       arreglo_declaracion
  *     | constante_declaracion
  *     | variable_declaracion
  *     | asignacion
@@ -33,9 +32,6 @@ export function registerStatementRules(parser) {
       /**
        * Declaraciones
        */
-      {
-        ALT: () => parser.SUBRULE(parser.arrayDeclaration)
-      },
       {
         ALT: () => parser.SUBRULE(parser.constantDeclaration)
       },
@@ -77,6 +73,13 @@ export function registerStatementRules(parser) {
       },
       {
         ALT: () => parser.SUBRULE(parser.writeStatement)
+      },
+
+      /**
+       * Retornar
+       */
+      {
+        ALT: () => parser.SUBRULE(parser.returnStatement)
       },
 
       /**

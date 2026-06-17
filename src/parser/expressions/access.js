@@ -1,8 +1,10 @@
+// acceso.js
+
 import * as Tokens from "../../lexer/tokens/index.js";
 
 /**
- * postfixExpression ::=
- *     primary
+ * acceso ::=
+ *     identificador
  *     { "[" expression "]" } ;
  */
 

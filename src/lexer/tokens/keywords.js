@@ -1,3 +1,5 @@
+// keywords.js
+
 import { createToken } from "chevrotain";
 
 /**
@@ -6,48 +8,57 @@ import { createToken } from "chevrotain";
  * =========================
  */
 export const End = createToken({
-  name: "Fin",
-  pattern: /\bFin\b/
+  name: "End",
+  pattern: /\bFin\b/,
+  label: "Fin"
 });
 
 export const If = createToken({
-  name: "Si",
-  pattern: /\bSi\b/
+  name: "If",
+  pattern: /\bSi\b/,
+  label: "Si"
 });
 
 export const Then = createToken({
-  name: "Entonces",
-  pattern: /\bEntonces\b/
+  name: "Then",
+  pattern: /\bEntonces\b/,
+  label: "Entonces"
 });
 
 export const Else = createToken({
-  name: "Sino",
-  pattern: /\bSino\b/
+  name: "Else",
+  pattern: /\bSino\b/,
+  label: "Sino"
 });
 
 export const Do = createToken({
-  name: "Hacer",
-  pattern: /\bHacer\b/
+  name: "Do",
+  pattern: /\bHacer\b/,
+  label: "Hacer"
 });
 
 export const While = createToken({
-  name: "Mientras",
-  pattern: /\bMientras\b/
+  name: "While",
+  pattern: /\bMientras\b/,
+  label: "Mientras"
 });
 
 export const For = createToken({
-  name: "Para",
-  pattern: /\bPara\b/
+  name: "For",
+  pattern: /\bPara\b/,
+  label: "Para"
 });
 
 export const To = createToken({
-  name: "Hasta",
-  pattern: /\bHasta\b/
+  name: "To",
+  pattern: /\bHasta\b/,
+  label: "Hasta"
 });
 
 export const Step = createToken({
-  name: "Paso",
-  pattern: /\bPaso\b/
+  name: "Step",
+  pattern: /\bPaso\b/,
+  label: "Paso"
 });
 
 /**
@@ -56,18 +67,21 @@ export const Step = createToken({
  * =========================
  */
 export const Switch = createToken({
-  name: "Seleccionar",
-  pattern: /\bSeleccionar\b/
+  name: "Switch",
+  pattern: /\bSeleccionar\b/,
+  label: "Seleccionar"
 });
 
 export const Case = createToken({
-  name: "Caso",
-  pattern: /\bCaso\b/
+  name: "Case",
+  pattern: /\bCaso\b/,
+  label: "Caso"
 });
 
 export const Default = createToken({
-  name: "Defecto",
-  pattern: /\bDefecto\b/
+  name: "Default",
+  pattern: /\bDefecto\b/,
+  label: "Defecto"
 });
 
 /**
@@ -76,23 +90,27 @@ export const Default = createToken({
  * =========================
  */
 export const Function = createToken({
-  name: "Funcion",
-  pattern: /\bFuncion\b/
+  name: "Function",
+  pattern: /\bFuncion\b/,
+  label: "Funcion"
 });
 
 export const Procedure = createToken({
-  name: "Procedimiento",
-  pattern: /\bProcedimiento\b/
+  name: "Procedure",
+  pattern: /\bProcedimiento\b/,
+  label: "Procedimiento"
 });
 
 export const Return = createToken({
-  name: "Retornar",
-  pattern: /\bRetornar\b/
+  name: "Return",
+  pattern: /\bRetornar\b/,
+  label: "Retornar"
 });
 
 export const Call = createToken({
-  name: "Llamar",
-  pattern: /\bLlamar\b/
+  name: "Call",
+  pattern: /\bLlamar\b/,
+  label: "Llamar"
 });
 
 /**
@@ -101,18 +119,15 @@ export const Call = createToken({
  * =========================
  */
 export const Declare = createToken({
-  name: "Declarar",
-  pattern: /\bDeclarar\b/
+  name: "Declare",
+  pattern: /\bDeclarar\b/,
+  label: "Declarar"
 });
 
 export const Constant = createToken({
-  name: "Constante",
-  pattern: /\bConstante\b/
-});
-
-export const As = createToken({
-  name: "Como",
-  pattern: /\bComo\b/
+  name: "Constant",
+  pattern: /\bConstante\b/,
+  label: "Constante"
 });
 
 /**
@@ -121,13 +136,15 @@ export const As = createToken({
  * =========================
  */
 export const Input = createToken({
-  name: "Leer",
-  pattern: /\bLeer\b/
+  name: "Input",
+  pattern: /\bLeer\b/,
+  label: "Leer"
 });
 
 export const Display = createToken({
-  name: "Escribir",
-  pattern: /\bEscribir\b/
+  name: "Display",
+  pattern: /\bEscribir\b/,
+  label: "Escribir"
 });
 
 /**
@@ -136,23 +153,27 @@ export const Display = createToken({
  * =========================
  */
 export const And = createToken({
-  name: "Y",
-  pattern: /\bY\b/
+  name: "And",
+  pattern: /\bY\b/,
+  label: "Y"
 });
 
 export const Or = createToken({
-  name: "O",
-  pattern: /\bO\b/
+  name: "Or",
+  pattern: /\bO\b/,
+  label: "O"
 });
 
 export const Not = createToken({
-  name: "NO",
-  pattern: /\bNO\b/
+  name: "Not",
+  pattern: /\bNO\b/,
+  label: "NO"
 });
 
 export const Mod = createToken({
-  name: "MOD",
-  pattern: /\bMOD\b/
+  name: "Mod",
+  pattern: /\bMOD\b/,
+  label: "MOD"
 });
 
 /**
@@ -184,7 +205,6 @@ export const KEYWORDS = [
 
   Declare,
   Constant,
-  As,
 
   Input,
   Display,

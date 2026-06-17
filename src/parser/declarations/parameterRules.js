@@ -8,9 +8,9 @@ import * as Tokens from "../../lexer/tokens/index.js";
  *     { "," parametro } ;
  *
  * parametro ::=
+ *     tipo
  *     identificador
- *     dimensiones_opc
- *     tipo ;
+ *     dimensiones_opc ;
  * 
  * dimensiones_opc ::=
  *     dimensiones
@@ -24,20 +24,19 @@ export function registerParameterRules(parser) {
 
   /**
    * parametro ::=
+   *     tipo
    *     identificador
-   *     dimensiones_opc
-   *     tipo ;
+   *     dimensiones_opc ;
    */
   parser.RULE("parameter", () => {
+
+    parser.SUBRULE(parser.type);
 
     parser.CONSUME(Tokens.Identifier);
 
     parser.OPTION(() => {
       parser.SUBRULE(parser.dimensionList);
     });
-
-    parser.SUBRULE(parser.type);
-
   });
 
   /**

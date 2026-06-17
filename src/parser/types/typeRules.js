@@ -23,7 +23,6 @@ export function registerTypeRules(parser) {
   parser.RULE("type", () => {
 
     parser.OR([
-
       {
         ALT: () => parser.CONSUME(Tokens.Integer)
       },

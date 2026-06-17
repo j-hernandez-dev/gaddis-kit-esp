@@ -1,3 +1,5 @@
+// whitespace.js
+
 import { createToken, Lexer } from "chevrotain";
 
 /**
@@ -8,9 +10,10 @@ import { createToken, Lexer } from "chevrotain";
  * Se ignoran durante el análisis léxico.
  */
 export const WhiteSpace = createToken({
-  name: "EspacoBlanco",
+  name: "WhiteSpace",
   pattern: /\s+/,
-  group: Lexer.SKIPPED
+  group: Lexer.SKIPPED,
+  label: "EspacioBlanco"
 });
 
 /**

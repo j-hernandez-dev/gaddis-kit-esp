@@ -1,3 +1,5 @@
+// literals.js
+
 import { createToken } from "chevrotain";
 
 /**
@@ -7,8 +9,9 @@ import { createToken } from "chevrotain";
  * variables, funciones, etc.
  */
 export const Identifier = createToken({
-  name: "Identificador",
-  pattern: /[a-zA-Z_][a-zA-Z0-9_]*/
+  name: "Identifier",
+  pattern: /[a-zA-Z_][a-zA-Z0-9_]*/,
+  label: "Identificador"
 });
 
 /**
@@ -17,8 +20,9 @@ export const Identifier = createToken({
  * =========================
  */
 export const IntegerLiteral = createToken({
-  name: "EnteroLiteral",
-  pattern: /\d+/
+  name: "IntegerLiteral",
+  pattern: /\d+/,
+  label: "EnteroLiteral"
 });
 
 /**
@@ -27,8 +31,9 @@ export const IntegerLiteral = createToken({
  * =========================
  */
 export const FloatLiteral = createToken({
-  name: "FlotanteLiteral",
-  pattern: /\d+\.\d+/
+  name: "FloatLiteral",
+  pattern: /\d+\.\d+/,
+  label: "FlotanteLiteral"
 });
 
 /**
@@ -37,8 +42,9 @@ export const FloatLiteral = createToken({
  * =========================
  */
 export const ScientificLiteral = createToken({
-  name: "CientificoLiteral",
-  pattern: /\d+(\.\d+)?[eE][+-]?\d+/
+  name: "ScientificLiteral",
+  pattern: /\d+(\.\d+)?[eE][+-]?\d+/,
+  label: "CientificoLiteral"
 });
 
 /**
@@ -47,29 +53,28 @@ export const ScientificLiteral = createToken({
  * =========================
  */
 export const StringLiteral = createToken({
-  name: "CadenaLiteral",
-  pattern: /"([^"\\]|\\.)*"/
+  name: "StringLiteral",
+  pattern: /"([^"\\]|\\.)*"/,
+  label: "CadenaLiteral"
 });
 
 /**
  * =========================
- * BOOLEAN / NULL LITERALS
+ * BOOLEAN
  * =========================
  */
 export const TrueLiteral =
 createToken({
-  name: "VerdaderoLiteral",
-  pattern: /Verdadero/ });
+  name: "TrueLiteral",
+  pattern: /Verdadero/,
+  label: "Verdadero"
+});
 
 export const FalseLiteral =
 createToken({
-  name: "FalsoLiteral",
-  pattern: /Falso/ });
-
-export const NullLiteral =
-createToken({
-  name: "NuloLiteral",
-  pattern: /Nulo/
+  name: "FalseLiteral",
+  pattern: /Falso/,
+  label: "Falso"
 });
 
 /**
@@ -86,7 +91,6 @@ export const LITERALS = [
 
   TrueLiteral,
   FalseLiteral,
-  NullLiteral,
 
   Identifier
 ];

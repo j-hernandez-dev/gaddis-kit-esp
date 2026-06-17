@@ -9,10 +9,10 @@ import * as Tokens from "../../lexer/tokens/index.js";
  *
  * variable_declaracion ::=
  *     "Declarar"
+ *     tipo
  *     identificador
  *     { "," identificador }
- *     "Como"
- *     tipo ;
+ *     ;
  */
 
 /**
@@ -20,14 +20,18 @@ import * as Tokens from "../../lexer/tokens/index.js";
  */
 export function registerVariableDeclarationRules(parser) {
 
+
   parser.RULE("variableDeclaration", () => {
 
+
     parser.CONSUME(Tokens.Declare);
+
+
+    parser.SUBRULE(parser.type);
 
     // Primer identificador obligatorio
     parser.CONSUME(Tokens.Identifier);
 
-    // Identificadores adicionales
     parser.MANY(() => {
 
       parser.CONSUME(Tokens.Comma);
@@ -36,10 +40,24 @@ export function registerVariableDeclarationRules(parser) {
 
     });
 
-    parser.CONSUME(Tokens.As);
+    parser.OPTION(() => {
 
-    parser.SUBRULE(parser.type);
+      parser.SUBRULE(parser.dimensionList);
 
+    });
   });
 
+  parser.RULE("dimensionList", () => {
+
+    parser.AT_LEAST_ONE(() => {
+
+      parser.CONSUME(Tokens.LBracket);
+
+      parser.SUBRULE(parser.expression);
+
+      parser.CONSUME(Tokens.RBracket);
+
+    });
+
+  });
 }

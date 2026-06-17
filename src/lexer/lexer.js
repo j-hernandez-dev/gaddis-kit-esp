@@ -1,3 +1,5 @@
+// lexer.js
+
 import { Lexer } from "chevrotain";
 import { TOKEN_VOCABULARY } from "./tokenVocabulary.js";
 

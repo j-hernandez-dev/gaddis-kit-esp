@@ -1,6 +1,7 @@
 // forRules.js
 
 import * as Tokens from "../../lexer/tokens/index.js";
+import { consumeAssignment } from "../config/assignmentRules.js";
 
 /**
  * ==================================
@@ -35,7 +36,7 @@ export function registerForRules(parser) {
 
     parser.CONSUME(Tokens.Identifier);
 
-    parser.CONSUME(Tokens.Assignment);
+    consumeAssignment(parser);
 
     parser.SUBRULE(parser.expression);
 

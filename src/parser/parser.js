@@ -31,7 +31,6 @@ import { registerTypeRules } from "./types/typeRules.js";
 /**
  * Declarations
  */
-import { registerArrayDeclarationRules } from "./declarations/arrayDeclaration.js";
 import { registerParameterRules } from "./declarations/parameterRules.js";
 import { registerConstantDeclarationRules } from "./declarations/constantDeclaration.js";
 import { registerVariableDeclarationRules } from "./declarations/variableDeclaration.js";
@@ -68,6 +67,12 @@ import { registerForRules } from "./control/forRules.js";
 import { registerSwitchRules } from "./control/switchRules.js";
 
 export class GaddisParser extends CstParser {
+  /**
+   * @param {any} inputCode
+   */
+  parse(inputCode) {
+    throw new Error("Method not implemented.");
+  }
 
   constructor() {
 
@@ -106,7 +111,6 @@ export class GaddisParser extends CstParser {
 
     registerParameterRules(this);
 
-    registerArrayDeclarationRules(this);
     registerConstantDeclarationRules(this);
     registerVariableDeclarationRules(this);
     registerFunctionDeclarationRules(this);

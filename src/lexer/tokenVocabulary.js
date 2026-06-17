@@ -1,3 +1,5 @@
+// tokenVocabulary.js
+
 import {
   // Keywords
   KEYWORDS,
@@ -43,7 +45,13 @@ export const TOKEN_VOCABULARY = [
    */
   ...KEYWORDS,
 
-  // Tipos de dato
+  /**
+   * Tipos de datos
+   *
+   * Integer -> Real -> String
+   * -> Logical -> Character
+   * antes de Identifier.
+   */
   ...TYPES,
 
   /**

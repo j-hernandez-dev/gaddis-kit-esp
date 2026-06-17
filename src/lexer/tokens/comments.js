@@ -1,3 +1,5 @@
+// comments.js
+
 import { createToken, Lexer } from "chevrotain";
 
 /**
@@ -7,8 +9,9 @@ import { createToken, Lexer } from "chevrotain";
  * // comentario
  */
 export const LineComment = createToken({
-  name: "LineaComentario",
+  name: "LineComment",
   pattern: /\/\/[^\n\r]*/,
+  label: "lineaComentario",
   group: Lexer.SKIPPED
 });
 
@@ -19,8 +22,9 @@ export const LineComment = createToken({
  * /* comentario *\/
  */
 export const BlockComment = createToken({
-  name: "BloqueComentario",
+  name: "BlockComment",
   pattern: /\/\*[\s\S]*?\*\//,
+  label: "bloqueComentario",
   group: Lexer.SKIPPED
 });
 

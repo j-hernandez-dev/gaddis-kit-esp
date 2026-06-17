@@ -4,7 +4,7 @@ import * as Tokens from "../../lexer/tokens/index.js";
 
 /**
  * potencia ::=
- *     factor
+ *     acceso
  *     [
  *         "^"
  *         potencia

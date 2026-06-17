@@ -1,55 +1,112 @@
 ESTRUCTURA
 
-parser/
-│
-├── parser.js
-│
-├── core/
-│   ├── programRules.js
-│   ├── statementRules.js
-│   └── blockRules.js
-│
-├── control/
-│   ├── if/
-│   │   ├── ifStatement.js
-│   │   ├── elseIfClause.js
-│   │   └── elseClause.js
-│   │
-│   ├── whileRules.js
-│   ├── forRules.js
-│   └── switchRules.js
-│
-├── declarations/
-│   ├── variableDeclaration.js
-│   ├── functionDeclaration.js
-│   ├── procedureDeclaration.js
-│   └── parameterRules.js
-│
-├── io/
-│   ├── readStatement.js
-│   └── writeStatement.js
-│
-├── expressions/
-│   ├── expression.js
-│   ├── logical.js
-│   ├── comparison.js
-│   ├── additive.js
-│   ├── multiplicative.js
-│   ├── power.js
-│   └── primary.js
-│
-├── calls/
-│   ├── functionCall.js
-│   └── procedureCall.js
-│
-├── statements/
-│   ├── assignmentStatement.js
-│   └── returnStatement.js
-│
-└── types/
-    └── typeRules.js
+src/
+├── ast/
+│   ├── builders/
+│   │   ├── ASTBuilder.js
+│   │   ├── DeclarationVisitor.js
+│   │   ├── ExpressionVisitor.js
+│   │   └── StatementVisitor.js
+│   ├── core/
+│   │   ├── ASTContext.js
+│   │   ├── ASTNode.js
+│   │   ├── NodeTypes.js
+│   │   └── ProgramNode.js
+│   ├── declarations/
+│   │   ├── ArrayDeclarationNode.js
+│   │   ├── ConstantDeclarationNode.js
+│   │   ├── FunctionDeclarationNode.js
+│   │   ├── ParameterNode.js
+│   │   ├── ProcedureDeclarationNode.js
+│   │   └── VariableDeclarationNode.js
+│   ├── expressions/
+│   │   ├── AccessNode.js
+│   │   ├── BinaryExpressionNode.js
+│   │   ├── FunctionCallNode.js
+│   │   ├── GroupExpressionNode.js
+│   │   ├── IdentifierNode.js
+│   │   ├── LiteralNode.js
+│   │   ├── LogicalExpressionNode.js
+│   │   └── LogicalNotNode.js
+│   ├── statements/
+│   │   ├── AssignmentNode.js
+│   │   ├── BlockNode.js
+│   │   ├── CaseNode.js
+│   │   ├── DefaultNode.js
+│   │   ├── ForNode.js
+│   │   ├── IfNode.js
+│   │   ├── ProcedureCallNode.js
+│   │   ├── ReadNode.js
+│   │   ├── ReturnNode.js
+│   │   ├── SwitchNode.js
+│   │   ├── WhileNode.js
+│   │   └── WriteNode.js
+│   └── utils/
+│       ├── ASTFactory.js
+│       ├── ASTPrinter.js
+│       └── CSTAdapter.js
+├── interpreter/
+│   └── run.js
+├── lexer/
+│   ├── config/
+│   │   └── assignmentMode.js
+│   ├── tokens/
+│   │   ├── comments.js
+│   │   ├── index.js
+│   │   ├── keywords.js
+│   │   ├── literals.js
+│   │   ├── operators.js
+│   │   ├── punctuation.js
+│   │   ├── types.js
+│   │   └── whitespace.js
+│   ├── lexer.js
+│   └── tokenVocabulary.js
+└── parser/
+    ├── calls/
+    │   ├── functionCall.js
+    │   └── procedureCall.js
+    ├── control/
+    │   ├── if/
+    │   │   ├── elseClause.js
+    │   │   ├── elseIfClause.js
+    │   │   └── ifStatement.js
+    │   ├── forRules.js
+    │   ├── switchRules.js
+    │   └── whileRules.js
+    ├── config/
+    │   └── assignmentRules.js
+    ├── core/
+    │   ├── blockRules.js
+    │   ├── programRules.js
+    │   └── statementRules.js
+    ├── declarations/
+    │   ├── constantDeclaration.js
+    │   ├── functionDeclaration.js
+    │   ├── parameterRules.js
+    │   ├── procedureDeclaration.js
+    │   └── variableDeclaration.js
+    ├── expressions/
+    │   ├── access.js
+    │   ├── additive.js
+    │   ├── comparison.js
+    │   ├── expression.js
+    │   ├── logical.js
+    │   ├── multiplicative.js
+    │   ├── power.js
+    │   └── primary.js
+    ├── io/
+    │   ├── readStatement.js
+    │   └── writeStatement.js
+    ├── statements/
+    │   ├── assignmentStatement.js
+    │   └── returnStatement.js
+    ├── types/
+    │   └── typeRules.js
+    └── parser.js
 
 -----------------
+
+GRAMÁTICA
 
 -- PROGRAMA --
 
@@ -58,12 +115,12 @@ programa ::= { instruccion } ;
 -- INSTRUCCIONES --
 
 instruccion ::=
-      arreglo_declaracion
-    | constante_declaracion
+      constante_declaracion
     | variable_declaracion
     | asignacion
     | entrada
     | salida
+    | retorno
     | if_stmt
     | while_stmt
     | for_stmt
@@ -80,28 +137,23 @@ bloque ::= { instruccion } ;
 
 variable_declaracion ::=
     "Declarar"
+    tipo
     identificador
     { "," identificador }
-    "Como"
-    tipo ;
-
-constante_declaracion ::=
-    "Declarar"
-    "Constante"
-    identificador
-    "="
-    expresion ;
-    
-arreglo_declaracion ::=
-    "Declarar"
-    identificador
-    dimensiones
-    "Como"
-    tipo ;
+    [ dimensiones ]
+    ;
 
 dimensiones ::=
     "[" expresion "]"
-    { "[" expresion "]" } ;
+    { "[" expresion "]" }
+    ;
+
+constante_declaracion ::=
+    "Constante"
+    tipo
+    identificador
+    "<-"
+    expresion ;
 
 tipo ::=
       "Entero"
@@ -180,7 +232,7 @@ termino ::=
     } ;
 
 potencia ::=
-    factor
+    acceso
     [
         "^"
         potencia
@@ -190,7 +242,6 @@ primario ::=
       numero
     | cadena
     | logico
-    | nulo
     | llamada_funcion
     | identificador
     | "(" expresion ")" ;
@@ -202,9 +253,6 @@ acceso ::=
 logico ::=
       "Verdadero"
     | "Falso" ;
-
-nulo ::=
-    "Nulo" ;
 
 -- CONDICIONALES --
 
@@ -307,16 +355,13 @@ procedimiento ::=
 
 -- FUNCIÓN --
 
-funcion ::=
+funcion ::= 
     "Funcion"
+    tipo
     identificador
-    "("
-    [ parametros ]
-    ")"
+    "(" [ parametros ] ")"
 
     bloque
-
-    retorno
 
     "Fin"
     "Funcion" ;
@@ -328,9 +373,9 @@ parametros_lista ::=
     { "," parametro } ;
 
 parametro ::=
+    tipo
     identificador
-    dimensiones_opc
-    tipo ;
+    dimensiones_opc ;
     
 dimensiones_opc ::=
     dimensiones
@@ -380,92 +425,601 @@ cadena ::=
     { caracter }
     '"' ;
 
--------------------- 
 
--- Control de flujo --
+-----------------------------------------
 
-Si
-Entonces
-Sino
-Mientras
-Hacer
-Para
-Hasta
-Que
-Fin
-Seleccionar
-Caso
-Defecto
+Semántica
 
--- Subprogramas --
+Perfecto. Con estas decisiones ya podemos definir una **especificación semántica formal** del lenguaje antes de implementar `SemanticAnalyzer`. Esto es importante porque el analizador semántico no debe "inventar" reglas; debe aplicar exactamente la filosofía del lenguaje.
 
-Funcion
-Procedimiento
-Retornar
-Llamar
+Voy a consolidar tus respuestas como reglas oficiales.
 
--- Declaraciones --
+---
 
-Declarar
-Constante
-Como
+# Especificación semántica del lenguaje
 
--- I/O --
+## 1. Sistema de tipos
 
-Leer
-Escribir
+### 1.1 Tipos base oficiales
 
--- Booleanos --
+El lenguaje será tipo **Gaddis/PSeInt completo**:
 
-Verdadero
-Falso
-Nulo
+Tipos primitivos:
 
--- Literales --
+| Tipo       | Descripción       |
+| ---------- | ----------------- |
+| `Entero`   | Números enteros   |
+| `Real`     | Números decimales |
+| `Cadena`   | Texto             |
+| `Caracter` | Un solo carácter  |
+| `Logico`   | Valores booleanos |
+| `Nulo`     | Ausencia de valor |
 
-NUMBER
-STRING
-BOOLEAN
-NULL
+Ejemplos:
 
--- Identificadores --
+```txt
+Declarar edad Como Entero
 
-IDENTIFIER → [a-zA-Z_][a-zA-Z0-9_]*
+Declarar promedio Como Real
 
--- Aritméticos --
+Declarar nombre Como Cadena
 
-+
--
-*
-/
-^
-MOD
+Declarar inicial Como Caracter
 
--- Relaciones --
+Declarar activo Como Logico
+```
 
+---
+
+# 1.2 Declaración de variables
+
+El tipo siempre es obligatorio.
+
+Correcto:
+
+```txt
+Declarar edad Como Entero
+```
+
+Incorrecto:
+
+```txt
+Declarar edad
+```
+
+El AST podría existir, pero semánticamente:
+
+```
+Error:
+La variable 'edad' requiere un tipo explícito.
+```
+
+---
+
+# 1.3 Tipado estático fuerte
+
+Una variable tiene un tipo fijo durante toda su vida.
+
+Ejemplo:
+
+```txt
+Declarar x Como Entero
+
+x <- 10
+```
+
+Correcto.
+
+Pero:
+
+```txt
+x <- "hola"
+```
+
+Error:
+
+```
+Error semántico:
+No se puede asignar Cadena a Entero.
+```
+
+---
+
+# 2. BinaryExpression
+
+Aquí hay decisiones importantes.
+
+---
+
+# 2.1 Operador `+`
+
+Tu lenguaje tendrá una regla híbrida:
+
+## Suma numérica
+
+```txt
+5 + 3
+```
+
+Resultado:
+
+```
+Entero
+```
+
+---
+
+## Concatenación cuando participa Cadena
+
+Permitido:
+
+```txt
+"Edad: " + edad
+```
+
+Ejemplo:
+
+```txt
+Declarar Entero edad
+
+edad <- 20
+
+Escribir "Edad: " + edad
+```
+
+Resultado:
+
+```
+Edad: 20
+```
+
+---
+
+La regla será:
+
+| Operandos                         | Resultado |
+| --------------------------------- | --------- |
+| Entero + Entero                   | Entero    |
+| Entero + Real                     | Real      |
+| Real + Real                       | Real      |
+| Cadena + cualquier tipo permitido | Cadena    |
+| Logico + Entero                   | ❌ Error   |
+| Logico + Real                     | ❌ Error   |
+
+---
+
+# 2.2 Comparaciones entre tipos
+
+Comparaciones estrictas.
+
+Ejemplo:
+
+```txt
+"5" > 3
+```
+
+Error:
+
+```
+No se pueden comparar Cadena y Entero.
+```
+
+Permitido:
+
+```txt
+5 > 3
+```
+
+```txt
+"x" = "y"
+```
+
+---
+
+# 2.3 Operadores lógicos
+
+Solo aceptan:
+
+```txt
+Logico
+```
+
+Ejemplo válido:
+
+```txt
+(x > 5) Y (y < 10)
+```
+
+Porque:
+
+```
+x > 5 → Logico
+y < 10 → Logico
+```
+
+---
+
+Incorrecto:
+
+```txt
+5 Y "hola"
+```
+
+Error:
+
+```
+El operador Y requiere operandos Logico.
+```
+
+---
+
+# 3. Conversión de tipos
+
+Tu lenguaje tendrá **coerción limitada controlada**.
+
+No será como JavaScript.
+
+---
+
+Permitido:
+
+```txt
+"Edad: " + edad
+```
+
+Regla especial:
+
+```
+Cadena + cualquier tipo básico
 =
-<>
-<
->
-<=
->=
+Cadena
+```
 
--- Asignación --
+---
 
-<-
+No permitido:
 
--- Lógicos --
+```txt
+5 + Verdadero
+```
 
-Y
-O
-NO
+Error:
 
--- Separadores --
+```
+No existe conversión automática de Logico a Entero.
+```
 
-(
-)
-[
-]
-,
-:
-.
+---
+
+# 4. Variables
+
+## 4.1 Variables no declaradas
+
+Error obligatorio.
+
+Ejemplo:
+
+```txt
+x <- 10
+```
+
+Sin:
+
+```txt
+Declarar x Como Entero
+```
+
+Resultado:
+
+```
+Variable 'x' no declarada.
+```
+
+---
+
+# 4.2 Redeclaración
+
+No permitida.
+
+Ejemplo:
+
+```txt
+Declarar x Como Entero
+
+Declarar x Como Real
+```
+
+Error:
+
+```
+La variable x ya fue declarada.
+```
+
+---
+
+# 5. Scope
+
+## 5.1 Scope de bloques
+
+El lenguaje tendrá scope léxico.
+
+Ejemplo:
+
+```txt
+Mientras x < 10
+
+    Declarar temporal Como Entero
+
+Fin Mientras
+
+
+Escribir temporal
+```
+
+Error:
+
+```
+La variable temporal no existe fuera del bloque.
+```
+
+---
+
+# 5.2 Shadowing
+
+No permitido.
+
+Ejemplo:
+
+```txt
+Declarar x Como Entero
+
+
+Mientras condicion
+
+    Declarar x Como Real
+
+Fin Mientras
+```
+
+Error:
+
+```
+La variable x ya existe en un scope superior.
+```
+
+---
+
+# 6. Control de flujo
+
+## 6.1 Condiciones booleanas obligatorias
+
+No hay coerción.
+
+Incorrecto:
+
+```txt
+Mientras 5
+```
+
+Error:
+
+```
+Mientras requiere una expresión Logica.
+```
+
+Correcto:
+
+```txt
+Mientras x < 10
+```
+
+---
+
+# 6.2 Return
+
+Funciones:
+
+```txt
+Funcion suma() Como Entero
+
+    Retornar 10
+
+Fin Funcion
+```
+
+Obligatorio.
+
+---
+
+Procedimientos:
+
+```txt
+Procedimiento mostrar()
+
+    Retornar
+
+Fin Procedimiento
+```
+
+Puede tener retorno vacío.
+
+Pero:
+
+```txt
+Procedimiento mostrar()
+
+    Retornar 10
+
+Fin Procedimiento
+```
+
+Error:
+
+```
+Un procedimiento no puede retornar un valor.
+```
+
+---
+
+# 7. Entrada / salida
+
+## 7.1 Escribir
+
+Permite mezcla de tipos.
+
+Ejemplo:
+
+```txt
+Escribir "Edad:", edad
+```
+
+Internamente:
+
+```
+Cadena + conversión controlada
+```
+
+---
+
+También:
+
+```txt
+Escribir "Edad: " + edad
+```
+
+válido.
+
+---
+
+# 7.2 Leer
+
+Respeta el tipo declarado.
+
+Ejemplo:
+
+```txt
+Declarar edad Como Entero
+
+Leer edad
+```
+
+El runtime espera:
+
+```
+Número entero
+```
+
+Si recibe:
+
+```
+hola
+```
+
+Error de ejecución:
+
+```
+No se puede convertir 'hola' a Entero.
+```
+
+---
+
+# 8. Funciones y procedimientos
+
+## 8.1 Retorno obligatorio
+
+Una función siempre declara tipo:
+
+Correcto:
+
+```txt
+Funcion suma() Como Entero
+```
+
+Incorrecto:
+
+```txt
+Funcion suma()
+```
+
+---
+
+# 8.2 Return obligatorio
+
+La función debe garantizar retorno.
+
+Ejemplo:
+
+```txt
+Funcion mayor(a Entero, b Entero) Como Entero
+
+    Si a > b Entonces
+        Retornar a
+    Fin Si
+
+Fin Funcion
+```
+
+Error:
+
+```
+La función puede finalizar sin retornar valor.
+```
+
+---
+
+# 9. Filosofía global
+
+Tu lenguaje queda definido como:
+
+## Pseudocódigo educativo fuertemente tipado
+
+Similar a:
+
+* Gaddis
+* Pascal
+* Ada
+* C# simplificado
+
+Pero con algunas comodidades:
+
+* concatenación automática controlada
+* sintaxis amigable
+* lenguaje educativo
+
+---
+
+# 10. Constantes (nuevo detalle)
+
+Las constantes serán **inmutables**.
+
+Ejemplo:
+
+```txt
+Declarar Constante pi = 3.1416
+```
+
+Registro:
+
+```js
+{
+    name:"pi",
+    kind:"constant",
+    type:"Real",
+    mutable:false
+}
+```
+
+---
+
+Esto:
+
+```txt
+pi <- 10
+```
+
+produce:
+
+```
+Error:
+No se puede modificar la constante 'pi'.
+```

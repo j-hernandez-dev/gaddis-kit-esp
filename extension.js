@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { run } from "./src/compiler/run.js";
+import { run } from "./src/interpreter/run.js";
 
 /**
  * @param {vscode.ExtensionContext} context

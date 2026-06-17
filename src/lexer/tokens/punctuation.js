@@ -1,3 +1,5 @@
+// punctuation.js
+
 import { createToken } from "chevrotain";
 
 /**
@@ -6,13 +8,15 @@ import { createToken } from "chevrotain";
  * =========================
  */
 export const LParen = createToken({
-  name: "IzqParen",
-  pattern: /\(/
+  name: "LParen",
+  pattern: /\(/,
+  label: "("
 });
 
 export const RParen = createToken({
-  name: "DerParen",
-  pattern: /\)/
+  name: "RParen",
+  pattern: /\)/,
+  label: ")"
 });
 
 /**
@@ -21,13 +25,15 @@ export const RParen = createToken({
  * =========================
  */
 export const LBracket = createToken({
-  name: "IzqBracket",
-  pattern: /\[/
+  name: "LBracket",
+  pattern: /\[/,
+  label: "["
 });
 
 export const RBracket = createToken({
-  name: "DerBracket",
-  pattern: /\]/
+  name: "RBracket",
+  pattern: /\]/,
+  label: "]"
 });
 
 /**
@@ -36,13 +42,15 @@ export const RBracket = createToken({
  * =========================
  */
 export const LBrace = createToken({
-  name: "IzqBrace",
-  pattern: /\{/
+  name: "LBrace",
+  pattern: /\{/,
+  label: "{"
 });
 
 export const RBrace = createToken({
-  name: "IzqBrace",
-  pattern: /\}/
+  name: "RBrace",
+  pattern: /\}/,
+  label: "}"
 });
 
 /**
@@ -51,23 +59,27 @@ export const RBrace = createToken({
  * =========================
  */
 export const Comma = createToken({
-  name: "Coma",
-  pattern: /,/
+  name: "Comma",
+  pattern: /,/,
+  label: ","
 });
 
 export const Colon = createToken({
   name: "Colon",
-  pattern: /:/
+  pattern: /:/,
+  label: ":"
 });
 
 export const Semicolon = createToken({
   name: "Semicolon",
-  pattern: /;/
+  pattern: /;/,
+  label: ";"
 });
 
 export const Dot = createToken({
-  name: "Punto",
-  pattern: /\./
+  name: "Dot",
+  pattern: /\./,
+  label: "."
 });
 
 /**

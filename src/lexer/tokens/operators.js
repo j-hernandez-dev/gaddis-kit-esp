@@ -1,3 +1,5 @@
+// operators.js
+
 import { createToken } from "chevrotain";
 
 /**
@@ -6,9 +8,9 @@ import { createToken } from "chevrotain";
  * =========================
  */
 export const Assignment = createToken({
-  name: "Asignacion",
-  pattern: /<-/,
-  label: "<-"
+    name: "Assignment",
+    pattern: /<-/,
+    label: "<-"
 });
 
 /**
@@ -16,23 +18,77 @@ export const Assignment = createToken({
  * ARITMÉTICOS
  * =========================
  */
-export const Plus = createToken({ name: "Mas", pattern: /\+/ });
-export const Minus = createToken({ name: "Menos", pattern: /-/ });
-export const Multiply = createToken({ name: "Multiplicar", pattern: /\*/ });
-export const Divide = createToken({ name: "Dividir", pattern: /\// });
-export const Power = createToken({ name: "Potencia", pattern: /\^/ });
+export const Plus = createToken({
+  name: "Plus",
+  pattern: /\+/,
+  label: "+"
+});
+
+export const Minus = createToken({
+  name: "Minus",
+  pattern: /-/,
+  label: "-"
+});
+
+export const Multiply = createToken({
+  name: "Multiply",
+  pattern: /\*/,
+  label: "*"
+});
+
+export const Divide = createToken({
+  name: "Divide",
+  pattern: /\//,
+  label: "/"
+});
+
+export const Power = createToken({
+  name: "Power",
+  pattern: /\^/,
+  label: "^"
+});
 
 /**
  * =========================
  * RELACIONALES
  * =========================
  */
-export const Equal = createToken({ name: "Igual", pattern: /=/ });
-export const NotEqual = createToken({ name: "Diferente", pattern: /<>/ });
-export const LessThan = createToken({ name: "MenorQue", pattern: /</ });
-export const GreaterThan = createToken({ name: "MayorQue", pattern: />/ });
-export const LessOrEqual = createToken({ name: "MenorOIgual", pattern: /<=/ });
-export const GreaterOrEqual = createToken({ name: "MayorOIgual", pattern: />=/ });
+
+export const LessOrEqual = createToken({
+  name: "LessOrEqual",
+  pattern: /<=/,
+  label: "<="
+});
+
+export const GreaterOrEqual = createToken({
+  name: "GreaterOrEqual",
+  pattern: />=/,
+  label: ">="
+});
+
+export const NotEqual = createToken({
+  name: "NotEqual",
+  pattern: /<>/,
+  label: "<>"
+});
+
+export const LessThan = createToken({
+  name: "LessThan",
+  pattern: /</,
+  label: "<"
+});
+
+export const GreaterThan = createToken({
+  name: "GreaterThan",
+  pattern: />/,
+  label: ">"
+});
+
+export const Equal = createToken({
+  name: "Equal",
+  pattern: /=/,
+  label: "="
+});
 
 /**
  * =========================
