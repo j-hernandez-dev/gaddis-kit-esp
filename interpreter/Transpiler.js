@@ -546,7 +546,7 @@ export class Transpiler {
                 )
                 .join(", ");
 
-        return `${identifier}(${args});\n`;
+        return `await ${identifier}(${args});\n`;
     }
 
     /**

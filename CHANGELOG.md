@@ -23,6 +23,11 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.2.7] - 2026-06-26
+
+- Error de no ejecución correcta de procedimientos corregido
+
+
 ## [1.2.6] - 2026-06-26
 
 - Error de dependencias corregido

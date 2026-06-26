@@ -34,7 +34,7 @@ El enfoque está centrado en el diseño de algoritmos, por lo que el lenguaje es
 
 ---
 
-## ⚙️ Estado actual (versión 1.2.6)
+## ⚙️ Estado actual (versión 1.2.7)
 
 El proyecto cuenta con:
 
