@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import { build } from "./src/interpreter/Runtime.js";
 import path from 'path';
-import * as fs from 'node:fs';
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -44,6 +43,13 @@ export function activate(context) {
 
         const workspaceFolders = vscode.workspace.workspaceFolders;
         const projecRootPath = workspaceFolders ? workspaceFolders[0].uri.fsPath : undefined;
+
+        if (!projecRootPath) {
+            vscode.window.showErrorMessage(
+                "No hay un proyecto abierto."
+            );
+            return;
+        }
 
         // @ts-ignore
         build(code, path.join(projecRootPath, cleanName) + ".js");
