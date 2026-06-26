@@ -10,7 +10,7 @@ Su objetivo principal es ofrecer un entorno académico y accesible para la ense�
 
 ---
 
-## 💻 Comandos
+## 💻 Comandos (VS Code)
 
 > Extensión de archivo
 
@@ -103,7 +103,7 @@ Fin Si
 
 ## 🧑‍💻 Autor
 
-Proyecto desarrollado por **j-hernandez** como herramienta educativa abierta.
+Proyecto desarrollado por **j-hernandez-dev** como herramienta educativa abierta.
 
 ---
 
