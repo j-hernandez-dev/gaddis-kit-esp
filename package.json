@@ -2,7 +2,7 @@
   "name": "gaddis-kit-esp",
   "displayName": "Gaddis Kit Español",
   "description": "Soporte de lenguaje y herramientas para el pseudolenguaje Gaddis.",
-  "version": "1.2.0",
+  "version": "1.2.6",
   "publisher": "j-hernandez-dev",
   "icon": "images/icon.png",
   "engines": {

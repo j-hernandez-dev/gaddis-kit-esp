@@ -3,7 +3,7 @@ export const dependencies =
 // @ts-nocheck
 import { createInterface } from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
-import { readFileSync, statSync, writeFileSync, appendFileSync, unlinkSync } from 'fs';
+import { readFile, stat, writeFile, appendFile, unlink } from 'fs/promises';
 
 `
 

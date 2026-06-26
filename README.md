@@ -34,13 +34,14 @@ El enfoque está centrado en el diseño de algoritmos, por lo que el lenguaje es
 
 ---
 
-## ⚙️ Estado actual (versión 1.2.0)
+## ⚙️ Estado actual (versión 1.2.6)
 
 El proyecto cuenta con:
 
 - Soporte de snippets personalizados para pseudocódigo estilo Gaddis.
 - Soporte de TextMate para resaltado de sintaxis.
 - Implementación de **lexer**, **parser**, **constructor AST**, **transpilador a JavaScript** y **runtime** sobre el lenguaje de JavaScript. utilizando la librería [Chevrotain](https://github.com/Chevrotain/chevrotain).
+- Librería estándar con soporte a funciones y procedimientos de matemáticas, cadenas y archivos.
 
 > ⚠️ Importante: en esta versión aún no se incluye análisis semántico, es una parte aún pendiente, por lo que funciona semánticamente como "superset" o encima de JavaScript.
 

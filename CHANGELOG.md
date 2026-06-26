@@ -23,6 +23,16 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.2.6] - 2026-06-26
+
+- Error de dependencias corregido
+
+## [1.2.5] - 2026-06-26
+
+- Se creó una librería estándar donde se puede hacer uso de:
+- Funciones y procedimientos de matemáticas, cadenas y archivos.
+- Nuevos snippets acorde a estos bloques.
+
 ## [1.2.0] - 2026-06-26
 
 ### Added
