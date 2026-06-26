@@ -1,30 +1,44 @@
 {
-    "Abrir Archivo": {
-        "prefix": "abrir",
-        "body": [
-            "Llamar Abrir(${1:archivo})"
-        ],
-        "description": "Abrir archivo"
-    },
     "Leer Archivo": {
-        "prefix": "leerarch",
+        "prefix": "archLeer",
         "body": [
-            "Llamar LeerArchivo (${1:archivo}, ${2:variable})"
+            "LeerArchivo(${1:ruta})"
         ],
-        "description": "Lectura de archivo"
+        "description": "Lectura de archivo. Devuelve Cadena."
+    },
+    "Existe Archivo": {
+        "prefix": "archExis",
+        "body": [
+            "ExisteArchivo(${1:ruta})"
+        ],
+        "description": "Existencia de archivo. Devuelve Logico."
+    },
+    "Peso Archivo": {
+        "prefix": "archPeso",
+        "body": [
+            "PesoArchivo(${1:ruta})"
+        ],
+        "description": "Peso de archivo (bytes). Devuelve Entero."
+    },
+    "Crear Archivo": {
+        "prefix": "archCrear",
+        "body": [
+            "Llamar CrearArchivo(${1:ruta})"
+        ],
+        "description": "Creación de archivo. No devuelve nada."
     },
     "Escribir Archivo": {
-        "prefix": "escribirarch",
+        "prefix": "archEscrib",
         "body": [
-            "Llamar EscribirArchivo (${1:archivo}, ${2:dato})"
+            "Llamar EscribirArchivo(${1:ruta}, ${2:contenido})"
         ],
-        "description": "Escritura de archivo"
+        "description": "Escritura de archivo. No devuelve nada."
     },
-    "Cerrar Archivo": {
-        "prefix": "cerrar",
+    "Eliminar Archivo": {
+        "prefix": "archElimin",
         "body": [
-            "Llamar Cerrar (${1:archivo})"
+            "Llamar EliminarArchivo(${1:ruta})"
         ],
-        "description": "Cerrar archivo"
+        "description": "Eliminación de archivo. No devuelve nada."
     }
 }

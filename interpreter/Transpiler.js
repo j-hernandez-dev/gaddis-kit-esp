@@ -1,6 +1,7 @@
 import path from "node:path";
 import { TranspilerError } from "../errors/TranspilerError.js"
 import { appendFile, mkdir, unlink, writeFile } from 'node:fs/promises';
+import { dependencies, endProgram, standartLibrary } from "./StandartLibrary.js";
 
 export class Transpiler {
 
@@ -15,9 +16,6 @@ export class Transpiler {
             this.JSFile = path.basename(build);
             this.JSDir = path.dirname(build) + "\\build\\";
         }
-
-        console.log(this.JSDir);
-        console.log(this.JSFile);
     }
 
     /**
@@ -28,36 +26,6 @@ export class Transpiler {
         while (Date.now() - inicio < milisecondues) {
         }
     }
-
-    getDependencies() {
-        return `// @ts-nocheck
-import { createInterface } from 'node:readline/promises'
-import { stdin as input, stdout as output } from 'node:process'
-
-try {
-async function inputData() {
-    const rl = createInterface({ input, output });
-    const answer = await rl.question("> ");
-    rl.close();
-    return answer;
-}
-`
-}
-
-    getEndProcess() {
-        return `
-process.exit(0);
-} catch (error) {
-console.error("╔═ Error De Runtime ══════════════════════════════════════════\\n"
-      + "\\n"
-      + error.name + ":"
-      + "\\n"
-      + error.message
-      + "\\n"
-      + "\\n══════════════════════════════════════════════════════════════");
-process.exit(1);
-}
-`}
 
     /**
      * @param {any} content
@@ -130,11 +98,9 @@ process.exit(1);
             code += this.statementType(statement);
         }
 
-        this.createFile(this.getDependencies());
+        const fileContent = dependencies + standartLibrary + code + endProgram;
+        this.createFile(fileContent);
         this.freezeThread(500);
-        this.writeFile(code);
-        this.freezeThread(500);
-        this.writeFile(this.getEndProcess());
     }
 
     /**

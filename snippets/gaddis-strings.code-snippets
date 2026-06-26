@@ -1,16 +1,107 @@
 {
-    "Longitud de cadena": {
+    "Longitud Cadena": {
         "prefix": "long",
         "body": [
             "Longitud(${1:cadena})"
         ],
-        "description": "Funciones de cadena"
+        "description": "Obtener la longitud de una cadena. Devuelve Entero."
     },
-    "Subcadena": {
+    "Caracter En": {
+        "prefix": "caren",
+        "body": [
+            "CaracterEn(${1:cadena}, ${2:posicion})"
+        ],
+        "description": "Obtener caracter en una posición. Devuelve Caracter."
+    },
+    "Sub Cadena": {
         "prefix": "subcad",
         "body": [
-            "Subcadena(${1:cadena}, ${2:inicio}, ${3:longitud})"
+            "SubCadena(${1:cadena}, ${2:inicio}, ${3:fin})"
         ],
-        "description": "Funciones de cadena"
-    }
+        "description": "Obtener subcadena en un rango. Devuelve Cadena."
+    },
+    "Buscar": {
+        "prefix": "busc",
+        "body": [
+            "Buscar(${1:cadena}, ${2:buscar})"
+        ],
+        "description": "Obtener posición de coincidencia de una cadena. Devuelve Entero."
+    },
+    "Contiene": {
+        "prefix": "cont",
+        "body": [
+            "Contiene(${1:cadena}, ${2:contiene})"
+        ],
+        "description": "Determina si contiene una cadena. Devuelve Logico."
+    },
+    "Mayusculas": {
+        "prefix": "mayus",
+        "body": [
+            "Mayusculas(${1:cadena})"
+        ],
+        "description": "Convierte toda la cadena a mayúsculas. Devuelve Cadena."
+    },
+    "Minusculas": {
+        "prefix": "minus",
+        "body": [
+            "Minusculas(${1:cadena})"
+        ],
+        "description": "Convierte toda la cadena a minúsculas. Devuelve Cadena."
+    },
+    "Recortar": {
+        "prefix": "recor",
+        "body": [
+            "Recortar(${1:cadena})"
+        ],
+        "description": "Recorta todos los espacios en blanco. Devuelve Cadena."
+    },
+    "Reemplazar": {
+        "prefix": "recor",
+        "body": [
+            "Reemplazar(${1:cadena}, ${2:viejo}, ${3:nuevo})"
+        ],
+        "description": "Reemplaza una cadena por otra. Devuelve Cadena."
+    },
+    "Dividir": {
+        "prefix": "divid",
+        "body": [
+            "Dividir(${1:cadena}, ${2:separador})"
+        ],
+        "description": "Divide una cadena en un arreglo mediante un separador. Devuelve arreglo Cadena."
+    },
+    "Unir": {
+        "prefix": "unir",
+        "body": [
+            "Unir(${1:cadena}, ${2:separador})"
+        ],
+        "description": "Une un arreglo en una cadena mediante un separador. Devuelve Cadena."
+    },
+    "Es Numero": {
+        "prefix": "esnum",
+        "body": [
+            "EsNumero(${1:cadena})"
+        ],
+        "description": "Determina si una cadena representa un número. Devuelve Logico."
+    },
+    "Es Vacia": {
+        "prefix": "esvac",
+        "body": [
+            "EsVacia(${1:cadena})"
+        ],
+        "description": "Determina si la cadena está vacía. Devuelve Logico."
+    },
+    "Empieza Con": {
+        "prefix": "empcon",
+        "body": [
+            "EmpiezaCon(${1:cadena}, ${2:empieza})"
+        ],
+        "description": "Determina si una cadena empieza con otra. Devuelve Logico."
+    },
+    "Termina Con": {
+        "prefix": "tercon",
+        "body": [
+            "TerminaCon(${1:cadena}, ${2:termina})"
+        ],
+        "description": "Determina si una cadena termina con otra. Devuelve Logico."
+    },
 }

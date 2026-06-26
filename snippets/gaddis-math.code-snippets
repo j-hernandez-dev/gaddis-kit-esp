@@ -1,37 +1,177 @@
 {
-    "Valor absoluto": {
+    "Valor Absoluto": {
         "prefix": "abs",
         "body": [
-            "Abs(${1:numero})"
+            "Absoluto(${1:numero})"
         ],
-        "description": "Valor absoluto"
+        "description": "Valor absoluto. Devuelve Entero."
     },
-    "Raíz cuadrada": {
-        "prefix": "rai",
+    "Minimo": {
+        "prefix": "min",
         "body": [
-            "Raiz(${1:numero})"
+            "Minimo(${1:a}, ${2:b})"
         ],
-        "description": "Raíz cuadrada"
+        "description": "Valor mínimo entre dos números. Devuelve Real."
+    },
+    "Maximo": {
+        "prefix": "max",
+        "body": [
+            "Maximo(${1:a}, ${2:b})"
+        ],
+        "description": "Valor máximo entre dos números. Devuelve Real."
+    },
+    "Redondeo": {
+        "prefix": "redon",
+        "body": [
+            "Redondeo(${1:x})"
+        ],
+        "description": "Redondea un número Real. Devuelve Entero."
+    },
+    "Piso": {
+        "prefix": "piso",
+        "body": [
+            "Piso(${1:x})"
+        ],
+        "description": "Redondea hacía abajo un número Real. Devuelve Entero."
+    },
+    "Raiz2": {
+        "prefix": "raiz2",
+        "body": [
+            "Raiz2(${1:x})"
+        ],
+        "description": "Calcula raíz cuadrada. Devuelve Real."
+    },
+    "Raiz3": {
+        "prefix": "raiz3",
+        "body": [
+            "Raiz3(${1:x})"
+        ],
+        "description": "Calcula raíz cúbica. Devuelve Real."
+    },
+    "Exponencial": {
+        "prefix": "expo",
+        "body": [
+            "Exponencial(${1:x})"
+        ],
+        "description": "Calcula el exponencial. Devuelve Real."
+    },
+    "Logaritmo": {
+        "prefix": "log",
+        "body": [
+            "Log(${1:x})"
+        ],
+        "description": "Calcula el logaritmo natural. Devuelve Real."
+    },
+    "Logaritmo10": {
+        "prefix": "log10",
+        "body": [
+            "Log10(${1:x})"
+        ],
+        "description": "Calcula el logaritmo base 10. Devuelve Real."
+    },
+    "Logaritmo2": {
+        "prefix": "log2",
+        "body": [
+            "Log2(${1:x})"
+        ],
+        "description": "Calcula el logaritmo base 2. Devuelve Real."
     },
     "Seno": {
         "prefix": "sen",
         "body": [
-            "Sen(${1:angulo})"
+            "Seno(${1:x})"
         ],
-        "description": "Función seno"
+        "description": "Función Seno. Devuelve Real."
     },
     "Coseno": {
         "prefix": "cos",
         "body": [
-            "Cos(${1:angulo})"
+            "Coseno(${1:x})"
         ],
-        "description": "Función coseno"
+        "description": "Función Coseno. Devuelve Real."
     },
     "Tangente": {
         "prefix": "tan",
         "body": [
-            "Tan(${1:angulo})"
+            "Tangente(${1:x})"
         ],
-        "description": "Función tangente"
+        "description": "Función Tangente. Devuelve Real."
+    },
+    "Arcoseno": {
+        "prefix": "arc",
+        "body": [
+            "Arcoseno(${1:x})"
+        ],
+        "description": "Función inversa Arcoseno. Devuelve Real."
+    },
+    "Arcocoseno": {
+        "prefix": "arccos",
+        "body": [
+            "Arcocoseno(${1:x})"
+        ],
+        "description": "Función inversa Arcocoseno. Devuelve Real."
+    },
+    "A Radianes": {
+        "prefix": "arad",
+        "body": [
+            "ARadianes(${1:x})"
+        ],
+        "description": "Convertir grados a radianes. Devuelve Real."
+    },
+    "A Grados": {
+        "prefix": "agrad",
+        "body": [
+            "AGrados(${1:x})"
+        ],
+        "description": "Convertir radianes a grados. Devuelve Real."
+    },
+    "PI": {
+        "prefix": "pi",
+        "body": [
+            "PI()"
+        ],
+        "description": "Número PI. Devuelve Real."
+    },
+    "Euler": {
+        "prefix": "euler",
+        "body": [
+            "Euler()"
+        ],
+        "description": "Número Euler. Devuelve Real."
+    },
+    "Aleatorio": {
+        "prefix": "aleat",
+        "body": [
+            "Aleatorio(${1:min}, ${2:max})"
+        ],
+        "description": "Número aleatorio en rango. Devuelve Entero."
+    },
+    "Promedio": {
+        "prefix": "prom",
+        "body": [
+            "Promedio(${1:x})"
+        ],
+        "description": "Calcular promedio de un arreglo Real. Devuelve Real."
+    },
+    "Sumatoria": {
+        "prefix": "suma",
+        "body": [
+            "Sumatoria(${1:x})"
+        ],
+        "description": "Calcular sumatoria de un arreglo Real. Devuelve Real."
+    },
+    "Mediana": {
+        "prefix": "media",
+        "body": [
+            "Mediana(${1:x})"
+        ],
+        "description": "Calcular mediana de un arreglo Real. Devuelve Real."
+    },
+    "Varianza": {
+        "prefix": "varia",
+        "body": [
+            "Varianza(${1:x})"
+        ],
+        "description": "Calcular varianza de un arreglo Real. Devuelve Real."
     }
 }

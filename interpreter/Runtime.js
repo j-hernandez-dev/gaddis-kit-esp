@@ -59,7 +59,7 @@ function parserCode(tokens) {
 
   const ast = builder.build(cst);
 
-  console.log(JSON.stringify(ast, null, 5));
+  //console.log(JSON.stringify(ast, null, 5));
 
   return ast;
 }
