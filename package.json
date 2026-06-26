@@ -2,7 +2,7 @@
   "name": "gaddis-kit-esp",
   "displayName": "Gaddis Kit Español",
   "description": "Soporte de lenguaje y herramientas para el pseudolenguaje Gaddis.",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "publisher": "j-hernandez-dev",
   "icon": "images/icon.png",
   "engines": {
@@ -24,8 +24,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "gaddis.runAnalysis",
-        "title": "Ejecutar análisis"
+        "command": "gaddis.runCode",
+        "title": "Ejecutar código"
+      },
+      {
+        "command": "gaddis.buildCode",
+        "title": "Construir código (JS)"
       }
     ],
     "languages": [
@@ -36,7 +40,7 @@
           "gaddis-es"
         ],
         "extensions": [
-          ".gad"
+          ".gds"
         ],
         "configuration": "./language-config/language-configuration.json"
       }

@@ -1,169 +1,226 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Gaddis Español",
-	"scopeName": "source.gaddis-es",
-	"patterns": [
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#declarations"
-		},
-		{
-			"include": "#functions"
-		},
-		{
-			"include": "#storage"
-		},
-		{
-			"include": "#support"
-		},
-		{
-			"include": "#constants"
-		},
-		{
-			"include": "#punctuation"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-					"name": "keyword.control.endblock.gaddis",
-					"match": "\\bFin\\s+(Si|Mientras|Hacer|Para|Funcion|Procedimiento|Seleccionar)\\b"
-				},
-				{
-					"name": "keyword.control.conditional.gaddis",
-					"match": "\\b(Si|Entonces|Sino|Sino\\s+Si|Seleccionar|Caso|Defecto)\\b"
-				},
-				{
-					"name": "keyword.control.loop.gaddis",
-					"match": "\\b(Mientras|Hacer|Para|Hasta|Paso)\\b"
-				},
-				{
-					"name": "keyword.control.module.gaddis",
-					"match": "\\b(Funcion|Procedimiento|Llamar|Retornar)\\b"
-				},
-				{
-					"name": "keyword.declaration.gaddis",
-					"match": "\\b(Declarar|Constante|Como)\\b"
-				},
-				{
-					"name": "keyword.operator.word.gaddis",
-					"match": "\\b(Y|O|NO|MOD)\\b"
-				},
-				{
-					"name": "keyword.operator.assignment.gaddis",
-					"match": "(<-|←)"
-				},
-				{
-					"name": "keyword.operator.arithmetic.gaddis",
-					"match": "(\\+|-|\\*|/|\\^|MOD)"
-				},
-				{
-					"name": "keyword.operator.relational.gaddis",
-					"match": "(<>|<=|>=|=|<|>)"
-				}
-			]
-		},
-		"declarations": {
-			"patterns": [
-				{
-					"name": "variable.other.gaddis",
-					"match": "(?<=\\bDeclarar\\s)[A-Za-z_][A-Za-z0-9_]*"
-				},
-				{
-					"name": "variable.other.assignment.gaddis",
-					"match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*(<-|←))"
-				},
-				{
-					"name": "constant.other.gaddis",
-					"match": "(?<=\\bConstante\\s)[A-Z_][A-Z0-9_]*"
-				}
-			]
-		},
-		"functions": {
-			"patterns": [
-				{
-					"match": "\\bFuncion\\s+(?:Entero|Real|Cadena|Caracter|Booleano)?\\s*([A-Za-z_][A-Za-z0-9_]*)",
-					"captures": {
-						"1": {
-							"name": "entity.name.function.definition.gaddis"
-						}
-					}
-				},
-				{
-					"match": "\\bProcedimiento\\s+([A-Za-z_][A-Za-z0-9_]*)",
-					"captures": {
-						"1": {
-							"name": "entity.name.procedure.definition.gaddis"
-						}
-					}
-				},
-				{
-					"match": "\\bProcedimiento\\s+(Principal)\\b",
-					"captures": {
-						"1": {
-							"name": "entity.name.main.gaddis"
-						}
-					}
-				}
-			]
-		},
-		"strings": {
-			"patterns": [
-				{
-					"name": "string.quoted.double.gaddis",
-					"begin": "\"",
-					"end": "\""
-				}
-			]
-		},
-		"storage": {
-			"patterns": [
-				{
-					"name": "storage.type.gaddis",
-					"match": "\\b(Entero|Real|Cadena|Caracter|Booleano)\\b"
-				}
-			]
-		},
-		"support": {
-			"patterns": [
-				{
-					"name": "support.function.gaddis",
-					"match": "\\b(Leer|Escribir|Abrir|LeerArchivo|EscribirArchivo|Cerrar|Renombrar|Eliminar)\\b"
-				}
-			]
-		},
-		"comments": {
-			"patterns": [
-				{
-					"name": "comment.line.double-slash.gaddis",
-					"match": "(//).*$"
-				}
-			]
-		},
-		"constants": {
-			"patterns": [
-				{
-					"name": "constant.language.boolean.gaddis",
-					"match": "\\b(Verdadero|Falso|Nulo)\\b"
-				}
-			]
-		},
-		"punctuation": {
-			"patterns": [
-				{
-					"name": "punctuation.separator.gaddis",
-					"match": "(\\(|\\)|\\[|\\]|\\{|\\}|,|:|;|\\.)"
-				}
-			]
-		}
-	}
+    "name": "Gaddis Español",
+    "scopeName": "source.gaddis-es",
+
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#characters"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#booleans"
+        },
+        {
+            "include": "#functions"
+        },
+        {
+            "include": "#calls"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#punctuation"
+        }
+    ],
+
+    "repository": {
+
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.gaddis",
+                    "match": "//.*$"
+                }
+            ]
+        },
+
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.gaddis",
+                    "begin": "\"",
+                    "end": "\""
+                }
+            ]
+        },
+
+        "characters": {
+            "patterns": [
+                {
+                    "name": "string.quoted.single.gaddis",
+                    "match": "'([^'\\\\]|\\\\.)'"
+                }
+            ]
+        },
+
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.float.gaddis",
+                    "match": "\\b\\d+\\.\\d+\\b"
+                },
+                {
+                    "name": "constant.numeric.integer.gaddis",
+                    "match": "\\b\\d+\\b"
+                }
+            ]
+        },
+
+        "keywords": {
+            "patterns": [
+
+                {
+                    "name": "keyword.control.conditional.gaddis",
+                    "match": "\\b(Si|Entonces|Sino|Seleccionar|Caso|Defecto)\\b"
+                },
+
+                {
+                    "name": "keyword.control.loop.gaddis",
+                    "match": "\\b(Mientras|Para|Hasta|Paso)\\b"
+                },
+
+                {
+                    "name": "keyword.control.module.gaddis",
+                    "match": "\\b(Funcion|Procedimiento|Llamar|Retornar)\\b"
+                },
+
+                {
+                    "name": "keyword.control.end.gaddis",
+                    "match": "\\bFin\\s+(Si|Mientras|Para|Funcion|Procedimiento|Seleccionar)\\b"
+                },
+
+                {
+                    "name": "keyword.declaration.gaddis",
+                    "match": "\\b(Declarar|Constante)\\b"
+                }
+            ]
+        },
+
+        "types": {
+            "patterns": [
+                {
+                    "name": "storage.type.gaddis",
+                    "match": "\\b(Entero|Real|Cadena|Caracter|Logico)\\b"
+                }
+            ]
+        },
+
+        "booleans": {
+            "patterns": [
+                {
+                    "name": "constant.language.boolean.gaddis",
+                    "match": "\\b(Verdad|Falso)\\b"
+                }
+            ]
+        },
+
+        "operators": {
+            "patterns": [
+
+                {
+                    "name": "keyword.operator.assignment.gaddis",
+                    "match": "<-"
+                },
+
+                {
+                    "name": "keyword.operator.logical.gaddis",
+                    "match": "\\b(Y|O|NO)\\b"
+                },
+
+                {
+                    "name": "keyword.operator.comparison.gaddis",
+                    "match": "(<=|>=|!=|=|<|>)"
+                },
+
+                {
+                    "name": "keyword.operator.arithmetic.gaddis",
+                    "match": "(\\+|-|\\*|/|\\^|%)"
+                }
+            ]
+        },
+
+        "functions": {
+            "patterns": [
+
+                {
+                    "name": "entity.name.function.gaddis",
+                    "match": "(?<=\\bFuncion\\s(?:Entero|Real|Cadena|Caracter|Logico)\\s)[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*"
+                },
+
+                {
+                    "name": "entity.name.procedure.gaddis",
+                    "match": "(?<=\\bProcedimiento\\s)[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*"
+                }
+            ]
+        },
+
+        "calls": {
+            "patterns": [
+
+                {
+                    "name": "support.function.call.gaddis",
+                    "match": "\\b[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*(?=\\()"
+                },
+
+                {
+                    "name": "support.function.procedure-call.gaddis",
+                    "match": "(?<=\\bLlamar\\s)[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*"
+                }
+            ]
+        },
+
+        "constants": {
+            "patterns": [
+                {
+                    "name": "constant.other.gaddis",
+                    "match": "(?<=\\bConstante\\s(?:Entero|Real|Cadena|Caracter|Logico)\\s)[A-Za-z_][A-Za-z0-9_]*"
+                }
+            ]
+        },
+
+        "variables": {
+            "patterns": [
+
+                {
+                    "name": "variable.other.assignment.gaddis",
+                    "match": "\\b[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*(?=\\s*<-)"
+                },
+
+                {
+                    "name": "variable.other.array.gaddis",
+                    "match": "\\b[A-Za-z_ÁÉÍÓÚáéíóúÑñ][A-Za-z0-9_ÁÉÍÓÚáéíóúÑñ]*(?=\\[)"
+                }
+            ]
+        },
+
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.separator.gaddis",
+                    "match": "(\\(|\\)|\\[|\\]|,|:)"
+                }
+            ]
+        }
+    }
 }

@@ -23,6 +23,45 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.2.0] - 2026-06-26
+
+### Added
+- Implementación del constructor de AST (Abstract Syntax Tree) para transformar la estructura CST generada por Chevrotain en un modelo intermedio del programa.
+- Nueva arquitectura basada en nodos AST para representar:
+  - Declaraciones de variables y constantes.
+  - Asignaciones.
+  - Expresiones aritméticas y lógicas.
+  - Llamadas a funciones y procedimientos.
+  - Entrada y salida de datos.
+  - Estructuras de control.
+- Implementación del transpilador del lenguaje Gaddis hacia JavaScript.
+- Soporte para generación automática de código JavaScript ejecutable a partir del AST.
+- Sistema inicial de ejecución interactiva del código generado utilizando Node.js.
+
+### Changed
+- Reestructuración completa del flujo de compilación:
+
+- Separación de responsabilidades entre las etapas del compilador:
+- Lexer encargado exclusivamente del reconocimiento de tokens.
+- Parser encargado de validar la estructura gramatical.
+- AST encargado de representar la semántica estructural del programa.
+- Transpilador encargado de convertir el lenguaje Gaddis a JavaScript.
+- Mejora en la organización interna del intérprete y ejecución de programas.
+- Adaptación de la arquitectura para permitir futuras etapas de análisis semántico, optimización y generación de código.
+
+### Fixed
+- Corrección de problemas relacionados con la construcción de estructuras complejas desde el CST.
+- Corrección de errores en la generación de código para expresiones anidadas.
+- Corrección de problemas en la ejecución de instrucciones generadas dinámicamente.
+
+### Known limitations
+- El análisis semántico todavía se encuentra en desarrollo.
+- El sistema de tipos aún no realiza validaciones completas.
+- Algunas características avanzadas del lenguaje todavía no cuentan con una traducción completa a JavaScript.
+- La optimización del código generado aún no está implementada.
+
+---
+
 ## [1.0.0] - 2026-06-12
 
 ### Added

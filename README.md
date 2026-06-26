@@ -5,6 +5,25 @@
 Su objetivo principal es ofrecer un entorno académico y accesible para la enseñanza y el aprendizaje del diseño de algoritmos, reduciendo la complejidad sintáctica propia de los lenguajes de programación tradicionales.
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-gaddis--kit--esp-black?logo=github)](https://github.com/j-hernandez-dev/gaddis-kit-esp)
+
+[![Wikiversity](https://img.shields.io/badge/Wikiversity-Gaddis_Pseudocode-0F67A6?logo=wikiversity&logoColor=white)](https://en.wikiversity.org/wiki/Pseudocode/Gaddis_Pseudocode)
+
+---
+
+## 💻 Comandos
+
+> Extensión de archivo
+
+.gds
+
+> Ejecutar código
+
+Ejecuta el código programado en Gaddis mediante la transpilación y ejecución en JavaScript.
+
+> Construir código (JS)
+
+Transpila el código programado en Gaddis a código de JavaScript.
+
 ---
 
 ## 📌 Propósito del proyecto
@@ -15,29 +34,29 @@ El enfoque está centrado en el diseño de algoritmos, por lo que el lenguaje es
 
 ---
 
-## ⚙️ Estado actual (versión 1.0.0)
+## ⚙️ Estado actual (versión 1.2.0)
 
-En su versión inicial, el proyecto cuenta con:
+El proyecto cuenta con:
 
 - Soporte de snippets personalizados para pseudocódigo estilo Gaddis.
 - Soporte de TextMate para resaltado de sintaxis.
-- Definición básica del lenguaje dentro de VS Code.
-- Implementación de un **lexer** y **parser** utilizando la librería [Chevrotain](https://github.com/Chevrotain/chevrotain).
-- Comando de “Ejecutar código fuente”, el cual actualmente realiza un **análisis léxico y sintáctico básico** del código.
+- Implementación de **lexer**, **parser**, **constructor AST**, **transpilador a JavaScript** y **runtime** sobre el lenguaje de JavaScript. utilizando la librería [Chevrotain](https://github.com/Chevrotain/chevrotain).
 
-> ⚠️ Importante: en esta versión aún no se incluye análisis semántico, interpretación ni ejecución real del lenguaje.
+> ⚠️ Importante: en esta versión aún no se incluye análisis semántico, es una parte aún pendiente, por lo que funciona semánticamente como "superset" o encima de JavaScript.
 
 ---
 
 ## 🚀 Funcionalidades planeadas
 
-A futuro, este proyecto busca evolucionar hacia un ecosistema completo de herramientas, incluyendo:
+Inicialmente, sólo se busca tener un acercamiento al pseudocódigo de Tony Gaddis.
 
-- Analizador semántico.
-- Transpilador hacia otros lenguajes de programación.
+En un posible futuro, este proyecto busca evolucionar hacia un ecosistema completo de herramientas, incluyendo:
+
+- Analizador gramátical y semántico avanzado.
+- Transpilador hacia otros lenguajes de programación además de JavaScript.
 - Sistema de diagnóstico de errores más avanzado.
-- Posible generación de AST y herramientas de visualización.
-- Soporte extendido para estructuras avanzadas del lenguaje.
+- Visualización de errores en edición de código.
+- Soporte extendido para librería estándar del lenguaje.
 
 ---
 
@@ -48,7 +67,7 @@ El lenguaje está diseñado bajo los siguientes principios:
 - Sintaxis clara y cercana al español.
 - Enfoque educativo y académico.
 - Simplicidad para principiantes.
-- Similitud con pseudocódigo utilizado en libros de texto.
+- Similitud con pseudocódigo utilizado por el autor Tony Gaddis.
 - Separación progresiva entre aprendizaje y complejidad técnica.
 
 ---
@@ -56,7 +75,7 @@ El lenguaje está diseñado bajo los siguientes principios:
 ## 🧪 Ejemplo de código
 
 ```plaintext
-Declarar x Como Entero
+Declarar Entero x
 
 x <- 10
 
@@ -69,15 +88,16 @@ Fin Si
 
 ## 🛠️ Requisitos
 
-Actualmente no se requieren dependencias externas adicionales para usar la extensión más allá de Visual Studio Code.
+- Visual Studio Code
+- Node.js (para la ejecución)
 
 ---
 
 ## ⚠️ Problemas conocidos
 
-* El comando de ejecución (Ejecutar análisis) actualmente solo realiza análisis léxico y sintáctico.
-* No existe aún ejecución real del código.
-* El manejo de errores aún puede mejorarse en cuanto a precisión y recuperación.
+* No hay soporte para el análisis semántico, por lo que aspectos como el tipado de datos es casi un adorno. La semántica que se maneja es la de JavaScript el cual es muy flexible.
+* El manejo de errores aún puede mejorarse en cuanto a precisión de mensajes de error.
+* En ocasiones es necesario ejecutar el código más de una vez debido a una transpilación de código incorrecta (asociado con el streaming escritura de archivos).
 
 ---
 
@@ -87,12 +107,6 @@ Proyecto desarrollado por **j-hernandez** como herramienta educativa abierta.
 
 ---
 
-## 📜 Licencia
+## 📜 Licencia (GPLv2)
 
 Este proyecto es de código abierto. Puede ser modificado y extendido libremente, siempre que se mantenga la atribución al autor original.
-
----
-
-## 📌 Notas finales
-
-Este proyecto representa una primera versión funcional de un entorno de pseudocódigo educativo. Su evolución está orientada a convertirse en una herramienta completa para el aprendizaje de algoritmos y estructuras de programación desde un enfoque simple, claro y progresivo.
